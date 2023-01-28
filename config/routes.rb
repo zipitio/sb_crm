@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   root 'pages#index'
   get '/stats', to: 'pages#stats'
 
-  resources :clients, only: [:show]
+  resources :clients, only: [:show, :index]
 end
