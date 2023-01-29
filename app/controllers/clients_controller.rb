@@ -8,5 +8,13 @@ class ClientsController < ApplicationController
 		@client = Client.find(params[:id])
 	end
 
+	def new
+
+	end
+
+	def create
+		render plain: params[:client]
+	end
+
 
 end
