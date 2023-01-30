@@ -1,4 +1,14 @@
 <h1>Create a new client</h1>
+	
+	
+<% if @client.errors.any? %>
+	<h2>The following errors prevent saving the new client</h2>
+	<ul>
+	<% @client.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+	<% end %>
+	</ul>
+<% end %>
 
 <%= form_with scope: :client, data: { turbo: false }, url: clients_path, local: true do |f| %>
 

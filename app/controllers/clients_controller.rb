@@ -9,13 +9,18 @@ class ClientsController < ApplicationController
 	end
 
 	def new
-
+		@client = Client.new
 	end
 
 	def create
 		@client = Client.new(params.require(:client).permit(:first_name, :last_name, :company))
-		@client.save
-		redirect_to @client
+		
+		if @client.save
+			flash[:notice] = "Client was successfully saved"
+			redirect_to @client
+		else 
+			render 'new'
+		end
 	end
 
 
