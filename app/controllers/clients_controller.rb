@@ -13,7 +13,9 @@ class ClientsController < ApplicationController
 	end
 
 	def create
-		render plain: params[:client]
+		@client = Client.new(params.require(:client).permit(:first_name, :last_name, :company))
+		@client.save
+		redirect_to @client
 	end
 
 
