@@ -23,5 +23,18 @@ class ClientsController < ApplicationController
 		end
 	end
 
+	def edit
+		@client = Client.find(params[:id])
+	end
 
+	def update
+		@client = Client.find(params[:id])
+
+		if @client.update(params.require(:client).permit(:first_name, :last_name, :company))
+			flash[:notice] = "Client was successfully updated"
+			redirect_to @client
+		else
+			render :edit, status: :unprocessable_entity
+		end
+	end
 end
