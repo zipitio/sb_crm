@@ -1,32 +1,6 @@
 <h1>Update the client</h1>
 	
-	
-<% if @client.errors.any? %>
-	<h2>The following errors prevent saving the client</h2>
-	<ul>
-	<% @client.errors.full_messages.each do |msg| %>
-		<li><%= msg %></li>
-	<% end %>
-	</ul>
-<% end %>
+<%= render 'form' %>
 
-<%= form_with(model: @client, local: true) do |f| %>
-
-	<p> 
-		<%= f.label :first_name %>
-		<%= f.text_field :first_name %>
-	</p>
-
-	<p>
-		<%= f.label :last_name %>
-		<%= f.text_field :last_name %>
-	</p>
-
-	<p>
-		<%= f.label :company %>
-		<%= f.text_field :company %>
-	</p>
-
-	<p> <%= f.submit %> </p>
-
-<% end %>
+<%= link_to "Cancel and return to clients home", clients_path%>
+<%= link_to "Delete Client", client_path(@client), data: { "turbo_method": :delete, "turbo-confirm": "Are you sure?"} %>

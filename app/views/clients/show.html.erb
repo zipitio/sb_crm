@@ -2,3 +2,7 @@
 
 <p>Client Name: <%= @client.first_name%> <%= @client.last_name %></p>
 <p>Company: <%= @client.company%> </p>
+
+<%= link_to "Clients Home", clients_path%>
+<%= link_to "Edit Client", edit_client_path(@client) %>
+<%= link_to "Delete Client", client_path(@client), data: { "turbo_method": :delete, "turbo-confirm": "Are you sure?"} %>
