@@ -20,7 +20,7 @@ class ClientsController < ApplicationController
 			flash[:notice] = "Client was successfully saved"
 			redirect_to @client
 		else 
-			render 'new'
+			render 'new', status: :unprocessable_entity
 		end
 	end
 

@@ -9,21 +9,21 @@
 
 <%= form_with(model: @client, local: true) do |f| %>
 
-	<p> 
+	<div> 
 		<%= f.label :first_name %>
 		<%= f.text_field :first_name %>
-	</p>
+	</div>
 
-	<p>
+	<div>
 		<%= f.label :last_name %>
 		<%= f.text_field :last_name %>
-	</p>
+	</div>
 
-	<p>
+	<div>
 		<%= f.label :company %>
 		<%= f.text_field :company %>
-	</p>
+	</div>
 
-	<p> <%= f.submit %> </p>
+	<div> <%= f.submit %> </div>
 
 <% end %>
