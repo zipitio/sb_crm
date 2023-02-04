@@ -2,6 +2,8 @@
 
 <p>Client Name: <%= @client.first_name%> <%= @client.last_name %></p>
 <p>Company: <%= @client.company%> </p>
+<p>Created <%= time_ago_in_words(@client.created_at) %> ago</p> 
+<p>Updated <%= time_ago_in_words(@client.updated_at) %> ago</p>
 
 <%= link_to "Clients Home", clients_path%>
 <%= link_to "Edit Client", edit_client_path(@client) %>
