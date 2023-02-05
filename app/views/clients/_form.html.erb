@@ -1,29 +1,35 @@
-<% if @client.errors.any? %>
-	<h2>The following errors prevent saving the client</h2>
-	<ul>
-	<% @client.errors.full_messages.each do |msg| %>
-		<li><%= msg %></li>
+<div>
+	<% if @client.errors.any? %>
+		<h2>The following errors prevent saving the client</h2>
+		<ul>
+		<% @client.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		<% end %>
+		</ul>
 	<% end %>
-	</ul>
-<% end %>
 
-<%= form_with(model: @client, local: true) do |f| %>
+	<%= form_with(model: @client, local: true) do |f| %>
 
-	<div> 
-		<%= f.label :first_name %>
-		<%= f.text_field :first_name %>
+		<div class="col-4"> 
+			<%= f.label :first_name, class: "col-form-label"  %>
+			<%= f.text_field :first_name, class: "form-control", placeholder: "First Name of Client" %>
+		</div>
+
+		<div class="col-4 mt-2">
+			<%= f.label :last_name, class: "form-label" %>
+			<%= f.text_field :last_name, class: "form-control", placeholder: "Last Name of Client" %>
+		</div>
+
+		<div class="col-4 mt-2">
+			<%= f.label :company, class: "form-label" %>
+			<%= f.text_field :company, class: "form-control", placeholder: "Name of Client Company"%>
+		</div>
+
+		<div class="mt-4 mb-2"> <%= f.submit class: "btn btn-outline-primary" %> </div>
+
+	<% end %>
+	<div class="mb-2">
+		<%= link_to "Cancel and return to clients home", clients_path, class: "btn btn-outline-success"%>
 	</div>
 
-	<div>
-		<%= f.label :last_name %>
-		<%= f.text_field :last_name %>
-	</div>
-
-	<div class="form-cotrol">
-		<%= f.label :company, :class => "form-label" %>
-		<%= f.text_field :company%>
-	</div>
-
-	<div> <%= f.submit %> </div>
-
-<% end %>
+</div>
