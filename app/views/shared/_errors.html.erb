@@ -1,0 +1,14 @@
+<% if @client.errors.any? %>
+	<div class="alert alert-danger alert-dismissible fade show col-10" role="alert">
+		<h4 class="alert-heading">The following errors prevent saving the client</h4>
+		<hr>
+		<ul>
+			<% @client.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+		</ul>
+		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+
+<% end %>
+
