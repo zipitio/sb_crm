@@ -9,6 +9,9 @@ gem "sassc-rails"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4", ">= 7.0.4.1"
 
+#add devise
+gem "devise"
+
 #bootstrap
 gem "bootstrap", "~>5.2.3"
 
