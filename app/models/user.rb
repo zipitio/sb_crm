@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+    has_many :clients
     validates :username, presence: true, 
         uniqueness: { case_sensitive: false}, 
         length: {minimum: 3, maximum: 25}
@@ -6,5 +7,4 @@ class User < ApplicationRecord
         uniqueness: { case_sensitive: false}, 
         length: { maximum: 105},
         format: { with: URI::MailTo::EMAIL_REGEXP}
-    has_many :clients
 end

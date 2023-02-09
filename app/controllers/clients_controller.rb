@@ -15,7 +15,7 @@ class ClientsController < ApplicationController
 
 	def create
 		@client = Client.new(client_params)
-		
+		@client.user = User.first
 		if @client.save
 			flash[:notice] = "Client was successfully saved"
 			redirect_to @client
