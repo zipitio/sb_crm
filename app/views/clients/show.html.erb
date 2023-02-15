@@ -7,7 +7,7 @@
 		<div><b>Company:</b> <%= @client.company%> </div>
 		<div><b>Created:</b> <%= time_ago_in_words(@client.created_at) %> ago</div> 
 		<div><b>Updated:</b> <%= time_ago_in_words(@client.updated_at) %> ago</div>
-		<div><b>Created by:</b> <%= @client.user.username %></div>
+		<div><b>Created by:</b> <%= @client.user.first_name %></div>
     <div class="my-2">
 		<%= link_to "Clients Home", clients_path, class: "btn btn-outline-primary"%>
 	</div>
