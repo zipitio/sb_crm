@@ -1,0 +1,33 @@
+<h1 class="m-3">Users List</h1>
+
+<div>
+	<%= link_to "Create new user", admin_users_path, :class => "btn btn-primary m-3" %>
+</div>
+
+<div class="table-responsive-md m-3">
+	<table class="table table-striped table-hover table-bordered">
+		<thead>
+			<tr class="table-secondary">
+				<th scope="col">First Name</th>
+				<th scope="col">Last Name</th>
+				<th scope="col">Email</th>
+				<th scope="col">Role</th>
+				<th scope="col">Created At</th>
+				<th scope="col" colspan="2">Actions</th>
+			</tr>
+		</thead>
+		<tbody class="table-group-divider">
+			<% @users.each do |user| %>
+				<tr scope="row" class="table-light">
+					<td><%= user.first_name %></td>
+					<td><%= user.last_name %></td>
+					<td><%= user.email %></td>
+					<td><%= user.role %></td>
+					<td><%= user.created_at.to_date %></td>
+					<td class="text-center"><%= link_to "Edit", admin_users_path, :class => "btn btn-secondary" %></td>
+					<td class="text-center"><%= link_to "Delete", admin_users_path, :class => "btn btn-danger" ,data: { "turbo_method": :delete, "turbo_confirm": "Are you sure?"} %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

@@ -5,6 +5,17 @@
       User Functionality for: <%= current_user.first_name %>
     </a>
     <ul class="dropdown-menu">
+      <% if current_user.admin? %>
+      <li>
+        <%= link_to "Admin: Index", admin_path, class: "dropdown-item" %>
+      </li>
+      <li>
+        <%= link_to "Admin: Clients", admin_clients_path, class: "dropdown-item" %>
+      </li>  
+      <li>
+        <%= link_to "Admin: Users", admin_users_path, class: "dropdown-item" %>
+      </li>  
+      <% end %>
       <li>
         <%= link_to "View Account", user_path(current_user), class: "dropdown-item" %>
       </li>
