@@ -1,3 +1,5 @@
+<%= render 'devise/shared/error_messages', resource: resource %>
+
 <div class="container col-6 mt-5">
 	<div class="card text-center border-dark">
 		<h1 class="card-header border-dark">SpaceByn CRM</h1>
@@ -5,7 +7,7 @@
 		<div class="card-body">
 			<h2 class="card-title">Login</h2>
 
-			<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+			<%= form_for(resource, as: resource_name, url: session_path(resource_name), data: {turbo: false}) do |f| %>
 
 			  <div class="field">
 			    <%= f.label :email %><br />

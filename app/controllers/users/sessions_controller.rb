@@ -9,9 +9,10 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+   def create
+    auth_options = { :recall => 'pages#index', :scope => :user }
+    resource = warden.authenticate!(auth_options)
+   end
 
   # DELETE /resource/sign_out
   # def destroy
