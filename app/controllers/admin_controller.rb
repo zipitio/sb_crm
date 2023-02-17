@@ -3,6 +3,7 @@ class AdminController < ApplicationController
   end
 
   def clients
+    @clients = Client.all.includes(:user)
   end
 
   def users

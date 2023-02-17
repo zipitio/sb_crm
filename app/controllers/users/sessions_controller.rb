@@ -12,6 +12,7 @@ class Users::SessionsController < Devise::SessionsController
    def create
     auth_options = { :recall => 'pages#index', :scope => :user }
     resource = warden.authenticate!(auth_options)
+    redirect_to clients_path
    end
 
   # DELETE /resource/sign_out
