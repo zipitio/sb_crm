@@ -13,5 +13,11 @@
     <strong>Client:</strong>
     <%= quote.client_id %>
   </p>
+  <p>
+    <strong>Logo</strong>
+  </p>
+    <%= image_tag(quote.logo, style:'width:300px;height:300px')%>
 
 </div>
+
+<%= link_to "View PDF", quote_pdf_path(quote)%>

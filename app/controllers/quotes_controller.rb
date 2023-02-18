@@ -1,5 +1,5 @@
 class QuotesController < ApplicationController
-  before_action :set_quote, only: %i[ show edit update destroy ]
+  before_action :set_quote, only: %i[ show edit update destroy pdf]
 
   # GET /quotes or /quotes.json
   def index
@@ -57,6 +57,20 @@ class QuotesController < ApplicationController
     end
   end
 
+  def pdf
+    pdf = Prawn::Document.new
+    pdf.text @quote.client.company, size: 48, style: :bold
+    pdf.text @quote.quote_type
+
+    logo_image = StringIO.open(@quote.logo.download)
+    pdf.image logo_image, fit: [300, 300]
+
+    send_data(pdf.render,
+      filename: "#{@quote.client.company}_sb_quote.pdf",
+      type: 'application/pdf',
+      disposition: 'inline')
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_quote
@@ -65,6 +79,6 @@ class QuotesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def quote_params
-      params.require(:quote).permit(:quote_type, :amount, :client_id)
+      params.require(:quote).permit(:quote_type, :amount, :client_id, :logo)
     end
 end

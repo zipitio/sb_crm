@@ -23,6 +23,6 @@ Rails.application.routes.draw do
   get 'quote', to: "pages#quote"
   get 'download', to: "pages#download"
   get 'preview', to: "pages#preview"
-  get 'client/pdf/:id', to: "client#pdf", as: 'client_pdf'
+  get 'quote/pdf/:id', to: "quotes#pdf", as: 'quote_pdf'
 
 end
