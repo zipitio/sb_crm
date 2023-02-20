@@ -58,19 +58,27 @@ class QuotesController < ApplicationController
   end
 
   def pdf
-    pdf = Prawn::Document.new
-    pdf.text @quote.client.company, size: 48, style: :bold
-    pdf.text @quote.quote_type
 
-    logo_image = StringIO.open(@quote.logo.download)
-    pdf.image logo_image, fit: [300, 300]
-
-    send_data(pdf.render,
+    pdf = ExportPdf.new
+    send_data pdf.render,
       filename: "#{@quote.client.company}_sb_quote.pdf",
       type: 'application/pdf',
-      disposition: 'inline')
+      disposition: 'inline'
+    
   end
 
+    # pdf = Prawn::Document.new
+    # pdf.text @quote.client.company, size: 48, style: :bold
+    # pdf.text @quote.quote_type
+
+    # logo_image = StringIO.open(@quote.logo.download)
+    # pdf.image logo_image, fit: [300, 300]
+
+    # send_data(pdf.render,
+    #   filename: "#{@quote.client.company}_sb_quote.pdf",
+    #   type: 'application/pdf',
+    #   disposition: 'inline')
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_quote
