@@ -16,7 +16,10 @@
   <p>
     <strong>Logo</strong>
   </p>
+
+  <% if quote.logo.present? %>
     <%= image_tag(quote.logo, style:'width:300px;height:300px')%>
+  <% end %>
 
 </div>
 

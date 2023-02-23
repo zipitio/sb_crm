@@ -2,6 +2,9 @@ class PagesController < ApplicationController
 	helper_method :resource_name, :resource, :devise_mapping, :resource_class
 
 	def index
+		if user_signed_in? 
+			redirect_to clients_path
+		end
 	end
 
 	def stats
