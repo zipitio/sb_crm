@@ -1,33 +1,41 @@
 <div class=" d-flex flex-column h-100">
 	<div class="card text-bg-light m-3" style="max-width: 18rem;">
-  <div class="card-header">Showing Client</div>
-  <div class="card-body">
-    	<div><b>Client First Name:</b> <%= @client.first_name%></div>
-		<div><b>Client Last Name:</b> <%= @client.last_name %></div>
-		<div><b>Company:</b> <%= @client.company%> </div>
-		<div><b>Created:</b> <%= time_ago_in_words(@client.created_at) %> ago</div> 
-		<div><b>Updated:</b> <%= time_ago_in_words(@client.updated_at) %> ago</div>
-		<div><b>Created by:</b> <%= @client.user.first_name %></div>
-    <div class="my-2">
-		<%= link_to "Clients Home", clients_path, class: "btn btn-outline-primary"%>
+		<div class="card-header">Showing Client</div>
+		<div class="card-body">
+			<div><b>Client First Name:</b> <%= @client.first_name%></div>
+			<div><b>Client Last Name:</b> <%= @client.last_name %></div>
+			<div><b>Company:</b> <%= @client.company%> </div>
+			<div><b>Created:</b> <%= time_ago_in_words(@client.created_at) %> ago</div> 
+			<div><b>Updated:</b> <%= time_ago_in_words(@client.updated_at) %> ago</div>
+			<div><b>Created by:</b> <%= @client.user.first_name %></div>
+		    <div class="my-2">
+				<%= link_to "Clients Home", clients_path, class: "btn btn-outline-primary"%>
+			</div>
+			<div class="mb-2">
+				<%= link_to "Edit Client", edit_client_path(@client), class: "btn btn-outline-success" %>
+			</div>
+			<div class="mb-2">
+				<%= link_to "Delete Client", client_path(@client), data: { "turbo_method": :delete, "turbo-confirm": "Are you sure?"}, class: "btn btn-outline-danger" %>
+	  	</div>
+		</div>
 	</div>
-	<div class="mb-2">
-		<%= link_to "Edit Client", edit_client_path(@client), class: "btn btn-outline-success" %>
-	</div>
-	<div class="mb-2">
-		<%= link_to "Delete Client", client_path(@client), data: { "turbo_method": :delete, "turbo-confirm": "Are you sure?"}, class: "btn btn-outline-danger" %>
-  </div>
-</div>
-</div>
 
-<div class="container">
+	<div class="ms-3">
+		<h3>Quotes</h3>
+	</div>
 	<% @client.quotes.each do |quote|  %>
-
-		Quote Type: <%= quote.quote_type  %>
-		Quote Amount: <%= quote.amount %>
-		<%= link_to "View PDF", quote_pdf_path(quote) %>
-
-
+		<div class="m-3">
+			<div>
+				Quote Type: <%= quote.quote_type  %>
+			</div>
+			<div>
+				Quote Amount: <%= quote.amount %> MXN
+			</div>
+			<div>
+				<%= link_to "View PDF", quote_pdf_path(quote) %>
+			</div>
+		</div>
 	<% end %>
+
 
 </div>

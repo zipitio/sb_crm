@@ -45,7 +45,7 @@ class ExportPdf
 		stroke_vertical_line 200, 450, at: 330
 		text_box "Items", at:[80, 435]
 		text_box "Price", at:[340, 435]
-		text_box "Total:#{@quote.amount}", at:[340, 230]
+		text_box "Total:#{@quote.amount} MXN", at:[340, 230]
 		move_cursor_to 380
 
 		0.upto(5) do |i|
