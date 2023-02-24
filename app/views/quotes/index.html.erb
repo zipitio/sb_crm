@@ -1,14 +1,15 @@
 <p style="color: green"><%= notice %></p>
+<div class="container">
+  <h1>Quotes</h1>
 
-<h1>Quotes</h1>
+  <div id="quotes">
+    <% @quotes.each do |quote| %>
+      <%= render quote %>
+      <p>
+        <%= link_to "Show this quote", quote %>
+      </p>
+    <% end %>
+  </div>
 
-<div id="quotes">
-  <% @quotes.each do |quote| %>
-    <%= render quote %>
-    <p>
-      <%= link_to "Show this quote", quote %>
-    </p>
-  <% end %>
+  <%= link_to "New quote", new_quote_path %>
 </div>
-
-<%= link_to "New quote", new_quote_path %>

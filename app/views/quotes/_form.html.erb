@@ -22,14 +22,14 @@
   </div>
 
   <div>
-    <%= form.label :client_id, style: "display: block" %>
-    <%= form.number_field :client_id %>
+    <%= form.collection_select :client_id, Client.all, :id, :company, :prompt => "Select the client" %>
   </div>
 
   <div>
     <%= form.label :logo, style: "display: block" %>
     <%= form.file_field :logo %>
   </div>
+
 
   <div>
     <%= form.submit %>

@@ -19,3 +19,15 @@
   </div>
 </div>
 </div>
+
+<div class="container">
+	<% @client.quotes.each do |quote|  %>
+
+		Quote Type: <%= quote.quote_type  %>
+		Quote Amount: <%= quote.amount %>
+		<%= link_to "View PDF", quote_pdf_path(quote) %>
+
+
+	<% end %>
+
+</div>
