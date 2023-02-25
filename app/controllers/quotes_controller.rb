@@ -12,7 +12,7 @@ class QuotesController < ApplicationController
 
   # GET /quotes/new
   def new
-    @quote = Quote.new
+    @quote = Quote.new quote_params
   end
 
   # GET /quotes/1/edit
@@ -87,6 +87,6 @@ class QuotesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def quote_params
-      params.require(:quote).permit(:quote_type, :amount, :client_id, :logo,)
+      params.fetch(:quote, {}).permit(:quote_type, :amount, :client_id, :logo,)
     end
 end
