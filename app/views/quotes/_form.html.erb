@@ -11,50 +11,43 @@
     </div>
   <% end %>
 
+  <div data-controller="form-element">
+
+    <%= form.button "Refresh", formaction: new_quote_path, formmethod: :get, data: { form_element_target: "submitbtn" } %>
+
+    <div>
+      <%= form.label :quote_type, style: "display: block" %>
+      <%= form.select :quote_type, Quote.quote_types, include_blank: true%>
+    </div>
+
+    <div>
+      <%= form.label :client_id , style: "display: block" %>
+      <%= form.collection_select :client_id, Client.all, :id, :company, :prompt => "Select the client" %>
+    </div>
+
+    <% quote.amount = 0 %>
+    <div>
+      <% if quote.quote_type == 'Sitio Web Estándar' %>
+        <% quote.amount += 6999 %>
+      <% elsif quote.quote_type == "Sitio Web Estándar - Extra" %>
+        <% quote.amount += 8498%>
+      <% elsif quote.quote_type == "Sitio Web Premium" %>
+        <% quote.amount += 11999 %>
+      <% elsif quote.quote_type == "Sitio Web Elite" %>
+        <% quote.amount += 19999 %>
+      <% end %>
+    </div>
+
+    <div>
+
+      <%= form.label :extra_amount, "Extra Amount", style: "display: block" %>
+      <%= form.number_field :extra_amount %>
+    </div>
+  <% quote.amount += quote.extra_amount.to_i %>
   <div>
-    <%= form.label :quote_type, style: "display: block" %>
-    <%= form.select :quote_type, 
-      ['Sitio Web Estándar', 
-        'Sitio Web Estándar - Extra',
-        'Sitio Web Premium', 
-        'Sitio Web Elite'], 
-        :prompt => "Select quote type here", formaction: new_quote_path, formmethod: :get %>
+    Amount for service: <%= quote.amount %> MXN
   </div>
-
-  <div>
-    <%= form.label :client_id , style: "display: block" %>
-    <%= form.collection_select :client_id, Client.all, :id, :company, :prompt => "Select the client" %>
-  </div>
-
-
-  <% quote_amount = 0 %>
-  <div>
-    <% if quote.quote_type == 'Sitio Web Estándar' %>
-      <% quote_amount += 6999 %>
-    <% elsif quote.quote_type == "Sitio Web Estándar - Extra" %>
-      <% quote_amount += 8498%>
-    <% elsif quote.quote_type == "Sitio Web Premium" %>
-      <% quote_amount += 11999 %>
-    <% elsif quote.quote_type == "Sitio Web Elite" %>
-      <% quote_amount += 19999 %>
-    <% end %>
-  </div>
-
-  <div>
-
-    <%= form.label :amount, "Extra Amount", style: "display: block" %>
-    <%= form.number_field :amount %>
-  </div>
-
-  <% quote_amount += quote.amount.to_i %>
-
-  <div>
-  <%= form.button "Refresh", formaction: new_quote_path, formmethod: :get %>
-  </div>
-
-  <div>
-    Amount for service: <%= quote_amount %> MXN
-  </div>
+</div>
 
   <div class="mt-3">
     <%= form.submit %>
