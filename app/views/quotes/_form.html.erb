@@ -17,7 +17,7 @@
 
     <div>
       <%= form.label :quote_type, style: "display: block" %>
-      <%= form.select :quote_type, Quote.quote_types, include_blank: true%>
+      <%= form.select :quote_type, Quote.quote_types.keys.map{ |key| [key.humanize, key] }, {include_blank: true},{ data: { action: "change->form-element#remotesubmit" }}%>
     </div>
 
     <div>
@@ -25,29 +25,20 @@
       <%= form.collection_select :client_id, Client.all, :id, :company, :prompt => "Select the client" %>
     </div>
 
-    <% quote.amount = 0 %>
     <div>
-      <% if quote.quote_type == 'Sitio Web Estándar' %>
-        <% quote.amount += 6999 %>
-      <% elsif quote.quote_type == "Sitio Web Estándar - Extra" %>
-        <% quote.amount += 8498%>
-      <% elsif quote.quote_type == "Sitio Web Premium" %>
-        <% quote.amount += 11999 %>
-      <% elsif quote.quote_type == "Sitio Web Elite" %>
-        <% quote.amount += 19999 %>
-      <% end %>
-    </div>
-
-    <div>
-
       <%= form.label :extra_amount, "Extra Amount", style: "display: block" %>
-      <%= form.number_field :extra_amount %>
+      <%= form.number_field :extra_amount, data: { action: "change->form-element#remotesubmit" } %>
     </div>
-  <% quote.amount += quote.extra_amount.to_i %>
+  </div>
+
+  <% quote.amount = quote.extra_amount.to_i + Quote.quote_types[quote.quote_type].to_i %>
+
+  <div>
+    <%= form.hidden_field :amount, value: quote.amount %>
+  </div>
   <div>
     Amount for service: <%= quote.amount %> MXN
   </div>
-</div>
 
   <div class="mt-3">
     <%= form.submit %>
