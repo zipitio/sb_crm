@@ -29,7 +29,7 @@
 				Quote Type: <%= quote.quote_type  %>
 			</div>
 			<div>
-				Quote Amount: <%= quote.amount %> MXN
+				Quote Amount: <%= number_to_currency(quote.amount, precision: 0) %>
 			</div>
 			<div>
 				<%= link_to "View PDF", quote_pdf_path(quote) %>

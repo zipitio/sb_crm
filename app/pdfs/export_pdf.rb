@@ -1,24 +1,26 @@
+include ActionView::Helpers::NumberHelper
+
 class ExportPdf
 	include Prawn::View
-	#before_action :set_quote, only: %i[ content ]
-
+	
 	def initialize(quote)
 		@quote = quote
 		text_format
 		header
 		content
 		footer
-		stroke_axis(step_length: 25)
+		#stroke_axis(step_length: 25)
 	end
 
 	def content
+		move_down 40
 		text "Cotización para:", align: :center, size:16
 		text_box "Cliente: #{@quote.client.company}", at: [100, 610]
 		stroke_horizontal_line 138, 450, at: 595
 		move_down 70
 
-		#Description of Prokect
-		text "Description of Project", align: :center, size:16
+		#Description of Project
+		text "Descripción de proyecto:", align: :center, size:16
 		text_box "Quote Type: #{@quote.quote_type.humanize}", at:[100, 500]
 		stroke_rectangle([70, 515], 400, 50)
 
@@ -53,16 +55,16 @@ class ExportPdf
 		#Price Column
 		text_box "Price", at:[340, 435]
 		text_box "Package amount:", at:[340,380]
-		text_box "#{Quote.quote_types[@quote.quote_type]} MXN", at:[340, 360]
+		text_box "#{number_to_currency(Quote.quote_types[@quote.quote_type], precision: 0)}", at:[340, 360]
 		if @quote.extra_amount != 0
 			text_box "Extra amount:", at:[340, 320]
-			text_box "#{@quote.extra_amount} MXN", at: [340, 300]
+			text_box "#{number_to_currency(@quote.extra_amount, precision: 0)}", at: [340, 300]
 		end
-		text_box "Total: #{@quote.amount} MXN", at:[340, 230]
+		text_box "Total: #{number_to_currency(@quote.amount, precision: 0)}", at:[340, 230]
 		move_cursor_to 380
 
 		#Item Price table footer
-		text_box "This quote is valid for the next 30 days.", at:[70, 190], size: 10
+		text_box "Esta cotización es válida para los próximos 30 días", at:[70, 190], size: 10
 	end
 
 	def text_format
@@ -76,9 +78,9 @@ class ExportPdf
 	end
 
 	def header
-		text "Spacebyn", size: 30
+		image "app/assets/images/recunet_logo.jpg", at: [0, 750], width: 150
 		text_box "55 30 42 12 27", at: [250, 715]
-		text_box "contacto@spacebyn.com", at: [196,700]
+		text_box "contacto@recunet.mx", at: [212,700]
 		fill_rectangle [350, 760], 300, 100
 		formatted_text_box(
 			[text: "Cotización", color: "FFFFFF", size: 20],
@@ -95,8 +97,8 @@ class ExportPdf
 		fill_color '235a7f'
 		fill_rectangle [-50, 150], 700, 200
 		formatted_text_box(
-			[text: "Spacebyn", color: "FFFFFF", size: 20],
-			at: [400,30]
+			[text: "Recunet S de R.L. de C.V.", color: "FFFFFF", size: 20],
+			at: [350,20]
 			)
 	end
 

@@ -20,8 +20,8 @@
           <tr scope="row" class="table-light">
             <td><%= quote.client.company %></td>
             <td><%= quote.quote_type %></td>
-            <td><%= quote.extra_amount %></td>
-            <td><%= quote.amount %></td>
+            <td><%= number_to_currency(quote.extra_amount, precision: 0) %></td>
+            <td><%= number_to_currency(quote.amount, precision: 0) %></td>
             <td><%= quote.created_at.to_date %></td>
             <td><%= link_to "View PDF", quote_pdf_path(quote) %></td>
             <td class="text-center"><%= link_to "Show", quote_path(quote), :class => "btn btn-secondary" %></td>
