@@ -5,6 +5,8 @@
 			<div><b>Client First Name:</b> <%= @client.first_name%></div>
 			<div><b>Client Last Name:</b> <%= @client.last_name %></div>
 			<div><b>Company:</b> <%= @client.company%> </div>
+			<div><b>Status:</b> <%= @client.status %>
+			</div>
 			<div><b>Created:</b> <%= time_ago_in_words(@client.created_at) %> ago</div> 
 			<div><b>Updated:</b> <%= time_ago_in_words(@client.updated_at) %> ago</div>
 			<div><b>Created by:</b> <%= @client.user.first_name %></div>
@@ -23,10 +25,16 @@
 	<div class="ms-3">
 		<h3>Quotes</h3>
 	</div>
+
+	<% if @client.quotes.empty? %>
+		<div class="ms-3"> No quotes available </div>
+	<% end %>
+		
+	
 	<% @client.quotes.each do |quote|  %>
 		<div class="m-3">
 			<div>
-				Quote Type: <%= quote.quote_type  %>
+				Quote Type: <%= quote.quote_type.humanize  %>
 			</div>
 			<div>
 				Quote Amount: <%= number_to_currency(quote.amount, precision: 0) %>

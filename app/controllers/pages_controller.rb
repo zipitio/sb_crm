@@ -8,6 +8,8 @@ class PagesController < ApplicationController
 	end
 
 	def stats
+		@clients = Client.all
+		@quotes = Quote.all
 	end
 
 	def resource_name

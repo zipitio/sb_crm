@@ -1,5 +1,7 @@
 class AdminController < ApplicationController
   def index
+    @admin_company_contact = AdminCompanyContact.new
+    @admin_company_contact = AdminCompanyContact.first
   end
 
   def clients

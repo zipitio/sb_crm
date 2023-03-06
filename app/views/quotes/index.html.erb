@@ -8,6 +8,7 @@
         <tr class="table-secondary">
           <th scope="col">Company</th>
           <th scope="col">Quote Type</th>
+          <th scope="col">Package Amount</th>
           <th scope="col">Extra Amount</th>
           <th scope="col">Total amount</th>
           <th scope="col">Created At</th>
@@ -19,7 +20,8 @@
         <% @quotes.each do |quote| %>
           <tr scope="row" class="table-light">
             <td><%= quote.client.company %></td>
-            <td><%= quote.quote_type %></td>
+            <td><%= quote.quote_type.humanize %></td>
+            <td><%= number_to_currency(Quote.quote_types[quote.quote_type], precision: 0) %></td>
             <td><%= number_to_currency(quote.extra_amount, precision: 0) %></td>
             <td><%= number_to_currency(quote.amount, precision: 0) %></td>
             <td><%= quote.created_at.to_date %></td>

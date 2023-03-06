@@ -18,6 +18,11 @@
 			<%= f.text_field :company, class: "form-control", placeholder: "Name of Client Company"%>
 		</div>
 
+		<div class="col-4 mt-2">
+			<%= f.label :status, class: "form-label" %>
+			<%= f.select :status, Client.statuses.keys.to_a, class: "form-control", include_blank: true%>
+		</div>
+
 		<div class="mt-4 mb-2"> <%= f.submit class: "btn btn-outline-primary" %> </div>
 
 	<% end %>
