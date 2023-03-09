@@ -58,8 +58,8 @@ class QuotesController < ApplicationController
   end
 
   def pdf
-
-    pdf = ExportPdf.new(@quote)
+    @acc = AdminCompanyContact.first
+    pdf = ExportPdf.new(@quote, @acc)
     send_data pdf.render,
       filename: "#{@quote.client.company}_sb_quote.pdf",
       type: 'application/pdf',

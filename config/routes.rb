@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   }
 
   get 'u/:id', to: 'users#profile', as: 'user'
-  delete "u/:id", to: "users#destroy"
+  delete "u/:id", to: 'users#destroy'
   get '/user' => "clients#index", :as => :user_root
   resources :clients
 

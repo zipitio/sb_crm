@@ -3,8 +3,9 @@ include ActionView::Helpers::NumberHelper
 class ExportPdf
 	include Prawn::View
 	
-	def initialize(quote)
+	def initialize(quote, acc)
 		@quote = quote
+		@acc = acc
 		text_format
 		header
 		content
@@ -79,8 +80,8 @@ class ExportPdf
 
 	def header
 		image "app/assets/images/recunet_logo.jpg", at: [0, 750], width: 150
-		text_box "55 30 42 12 27", at: [250, 715]
-		text_box "contacto@recunet.mx", at: [212,700]
+		text_box "Teléfono: #{@acc.phone}", at: [212, 715]
+		text_box "Correo: #{@acc.email}", at: [212,700]
 		fill_rectangle [350, 760], 300, 100
 		formatted_text_box(
 			[text: "Cotización", color: "FFFFFF", size: 20],

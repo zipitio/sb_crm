@@ -26,7 +26,6 @@
 					<td><%= user.email %></td>
 					<td><%= user.role %></td>
 					<td><%= user.created_at.to_date %></td>
-					<td class="text-center"><%= link_to "Edit", admin_users_path, :class => "btn btn-secondary" %></td>
 					<td class="text-center"><%= link_to "Delete", user_path(user), :class => "btn btn-danger" ,data: { "turbo_method": :delete, "turbo_confirm": "Are you sure?"} %></td>
 
 
