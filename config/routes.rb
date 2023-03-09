@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     get 'admin/clients'
     get 'admin/users'
     get 'users/profile'
+    get 'acc/:id/edit', to: 'admin_company_contacts#edit', as: "edit_acc"
+    patch 'acc/:id', to: 'admin_company_contacts#update'
   end
 
   devise_for :users, path: 'users', controllers: {

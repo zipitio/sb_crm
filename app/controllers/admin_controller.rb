@@ -1,7 +1,9 @@
 class AdminController < ApplicationController
   def index
-    @admin_company_contact = AdminCompanyContact.new
-    @admin_company_contact = AdminCompanyContact.first
+    if AdminCompanyContact.all.count == 0
+      @acc = AdminCompanyContact.new
+    end
+    @acc = AdminCompanyContact.first
   end
 
   def clients
@@ -11,4 +13,7 @@ class AdminController < ApplicationController
   def users
     @users = User.all
   end
+
+
 end
+

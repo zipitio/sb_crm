@@ -1,9 +1,15 @@
 <div class="ms-3">
-	<h1 class="mb-3">Admin Homepage</h1>
+
+	<h1 class="mb-3">Admin Home</h1>
 
 	<%= link_to "CRM Users", admin_users_path, class: "btn btn-outline-primary" %>
+	
+	<h3 class="mt-3">Company Contact Info</h3>
+	<%= turbo_frame_tag @acc do %>
+		<%= render 'layouts/messages' %>
 
-	<div class="mt-3">Company Contact Info</div>
-	<div>Email: <%= @admin_company_contact.email %> </div>
-	<div>Phone: <%= @admin_company_contact.phone %> </div>
+		<div>Email: <%= @acc.email %> </div>
+		<div>Phone: <%= @acc.phone %> </div>
+		<%= link_to "Edit Company Contact", edit_acc_path(@acc), class: "btn btn-outline-success mt-3" %>
+	<% end %>
 </div>
