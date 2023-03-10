@@ -7,6 +7,12 @@
 			<div><b>Company:</b> <%= @client.company%> </div>
 			<div><b>Status:</b> <%= @client.status %>
 			</div>
+			<div><b>Whatsapp:</b>
+				<%= @client.whatsapp %> 
+				<%= link_to icon("whatsapp", class: "text-success"),
+				"https://api.whatsapp.com/send/?phone=" + @client.whatsapp,
+				target: '_blank' %>
+			</div>
 			<div><b>Created:</b> <%= time_ago_in_words(@client.created_at) %> ago</div> 
 			<div><b>Updated:</b> <%= time_ago_in_words(@client.updated_at) %> ago</div>
 			<div><b>Created by:</b> <%= @client.user.first_name %></div>
