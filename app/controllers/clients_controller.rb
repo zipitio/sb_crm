@@ -48,6 +48,8 @@ class ClientsController < ApplicationController
 	end
 
 	def client_params
-		params.require(:client).permit(:first_name, :last_name, :company, :status, :whatsapp)
+		params.require(:client).permit(:first_name, :last_name,
+		 :company, :status, :whatsapp, :email, :notes, :phone, :industry,
+		 :location, :facebook, :instagram, :linkedin)
 	end
 end

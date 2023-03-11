@@ -1,22 +1,82 @@
-<div class=" d-flex flex-column h-100">
-	<div class="card text-bg-light m-3" style="max-width: 18rem;">
-		<div class="card-header">Showing Client</div>
-		<div class="card-body">
-			<div><b>Client First Name:</b> <%= @client.first_name%></div>
-			<div><b>Client Last Name:</b> <%= @client.last_name %></div>
-			<div><b>Company:</b> <%= @client.company%> </div>
-			<div><b>Status:</b> <%= @client.status %>
+<div class="d-flex flex-column h-100">
+
+	<!-- Card 1 -->
+
+	<div class="row">
+		<div class="card text-bg-light m-3 col-4" style="max-width: 18rem;">
+			<div class="card-header">Showing Client</div>
+			<div class="card-body">
+				<div><b>Client First Name:</b> <%= @client.first_name %></div>
+				<div><b>Client Last Name:</b> <%= @client.last_name %></div>
+				<div><b>Company:</b> <%= @client.company %> </div>
+				<div><b>Industry:</b> <%= @client.industry %> </div>
+				<div><b>Location:</b> <%= @client.location %> </div>
+				<div><b>Status:</b> <%= @client.status %></div>
+				<div><b>Created:</b> <%= time_ago_in_words(@client.created_at) %> ago</div> 
+				<div><b>Updated:</b> <%= time_ago_in_words(@client.updated_at) %> ago</div>
+				<div><b>Created by:</b> <%= @client.user.first_name %></div>
 			</div>
-			<div><b>Whatsapp:</b>
-				<%= @client.whatsapp %> 
-				<%= link_to icon("whatsapp", class: "text-success"),
-				"https://api.whatsapp.com/send/?phone=" + @client.whatsapp,
-				target: '_blank' %>
+		</div>
+
+		<!-- Card 2 -->
+
+		<div class="card text-bg-light m-3 col-4" style="max-width: 18rem;">
+			<div class="card-header">Client Contact Info</div>
+			<div class="card-body">
+				<div><b>Phone:</b> <%= @client.phone %></div>
+				<div><b>Whatsapp:</b>
+					<%= @client.whatsapp %>
+					<% if @client.whatsapp.present? %>
+						<%= link_to icon("whatsapp", class: "text-success"),
+						"https://api.whatsapp.com/send/?phone=" + @client.whatsapp,
+						target: '_blank' %>
+					<% end %>
+				</div>
+				<div><b>Email: </b>
+					<%= @client.email %>
+					<% if @client.email.present? %>
+						<%= link_to icon("envelope", class: "text-primary" ),
+						"mailto:" + @client.email %>
+					<% end %>
+				</div>
+				<div><b>Facebook:</b>
+					<% if @client.facebook.present? %> 
+						<%= link_to @client.facebook,
+						if @client.facebook.include? "http://"
+						then @client.facebook else "https://" + @client.facebook end %> 
+					<% end %>
+				</div>
+				<div><b>Instagram:</b>
+					<% if @client.instagram.present? %> 
+						<%= link_to @client.instagram,
+						if @client.instagram.include? "https://" 
+						then @client.instagram else "https://" + @client.instagram end %> 
+					<% end %>
+				</div>
+				<div><b>LinkedIn:</b>
+					<% if @client.linkedin.present? %> 
+						<%= link_to @client.linkedin,
+						if @client.linkedin.include? "https://" 
+						then @client.linkedin else "https://" + @client.linkedin end %>
+					<% end %>
+				</div>
 			</div>
-			<div><b>Created:</b> <%= time_ago_in_words(@client.created_at) %> ago</div> 
-			<div><b>Updated:</b> <%= time_ago_in_words(@client.updated_at) %> ago</div>
-			<div><b>Created by:</b> <%= @client.user.first_name %></div>
-		    <div class="my-2">
+		</div>
+
+		<!-- Card 3 -->
+
+		<div class="card text-bg-light m-3 col-4" style="max-width: 18rem;">
+			<div class="card-header">More Client Info</div>
+			<div class="card-body">
+				<div><b>Notes:</b> <%= @client.notes%></div>
+				
+			</div>
+		</div>
+	</div>
+		
+		<!-- Buttons -->
+		<div class="ms-3">
+			<div class="my-2">
 				<%= link_to "Clients Home", clients_path, class: "btn btn-outline-primary"%>
 			</div>
 			<div class="mb-2">
@@ -24,14 +84,15 @@
 			</div>
 			<div class="mb-2">
 				<%= link_to "Delete Client", client_path(@client), data: { "turbo_method": :delete, "turbo-confirm": "Are you sure?"}, class: "btn btn-outline-danger" %>
-	  	</div>
 		</div>
+
 	</div>
+
+	<!-- Quotes -->
 
 	<div class="ms-3">
 		<h3>Quotes</h3>
 	</div>
-
 	<% if @client.quotes.empty? %>
 		<div class="ms-3"> No quotes available </div>
 	<% end %>
@@ -50,6 +111,6 @@
 			</div>
 		</div>
 	<% end %>
-
-
 </div>
+
+

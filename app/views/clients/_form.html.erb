@@ -19,13 +19,56 @@
 		</div>
 
 		<div class="col-4 mt-2">
+			<%= f.label :industry, class: "form-label" %>
+			<%= f.text_field :industry, class: "form-control", placeholder: "Industry Type" %>
+		</div>
+
+		<div class="col-4 mt-2"> 
+			<%= f.label :location, class: "form-label" %>
+			<%= f.text_field :location, class: "form-control", placeholder: "Location" %>
+		</div>
+
+		<div class="col-4 mt-2">
 			<%= f.label :status, class: "form-label" %>
-			<%= f.select :status, Client.statuses.keys.to_a, class: "form-control", include_blank: true %>
+			<div class="form-group">
+			<%= f.select :status, Client.statuses.keys.to_a, class: "form-select", include_blank: true %>
+			</div>
+		</div>
+
+		<div class="col-4 mt-2">
+			<%= f.label :phone, class: "form-label" %>
+			<%= f.text_field :phone, class: "form-control", placeholder: "Phone number"%>			
 		</div>
 
 		<div class="col-4 mt-2">
 			<%= f.label :whatsapp, class: "form-label" %>
 			<%= f.text_field :whatsapp, class: "form-control", placeholder: "Whatsapp"%>			
+		</div>
+
+		<div class="col-4 mt-2">
+			<%= f.label :email, class: "form-label" %>
+			<%= f.text_field :email, class: "form-control", placeholder: "Email" %>
+		</div>
+
+		<div class="col-4 mt-2">
+			<%= f.label :facebook, class: "form-label" %>
+			<%= f.text_field :facebook, class: "form-control", placeholder: "Facebook" %>
+		</div>
+
+		<div class="col-4 mt-2">
+			<%= f.label :instagram, class: "form-label" %>
+			<%= f.text_field :instagram, class: "form-control", placeholder: "Instagram" %>
+		</div>
+
+		<div class="col-4 mt-2">
+			<%= f.label :linkedin, class: "form-label" %>
+			<%= f.text_field :linkedin, class: "form-control", placeholder: "Linkedin" %>
+		</div>
+
+		<div class="col-4 mt-2">
+			<%= f.label :notes, class: "form-label" %>
+			<%= f.text_area :notes, class: "form-control", placeholder: "Notes" %>
+			
 		</div>
 
 		<div class="mt-4 mb-2"> <%= f.submit class: "btn btn-outline-primary" %> </div>
