@@ -1,10 +1,12 @@
-<h1>Editing quote</h1>
+<div class="container">
+  <h1>Editing quote</h1>
 
-<%= render "form", quote: @quote %>
+  <%= render "form", quote: @quote %>
 
-<br>
+  <br>
 
-<div>
-  <%= link_to "Show this quote", @quote %> |
-  <%= link_to "Back to quotes", quotes_path %>
+  <div>
+    <%= link_to "Show this quote", @quote, class: "btn btn-outline-success" %>
+    <%= link_to "Back to quotes", quotes_path, class: "btn btn-outline-info" %>
+  </div>
 </div>

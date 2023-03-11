@@ -1,7 +1,6 @@
 <div id="<%= dom_id quote %>">
   <p>
     <strong>Type:</strong>
-    <%= quote.quote_type %>
     <%= quote.quote_type.humanize %>
   </p>
 
@@ -19,4 +18,4 @@
 
 </div>
 
-<%= link_to "View PDF", quote_pdf_path(quote)%>
+<%= link_to "View PDF", quote_pdf_path(quote), class: "btn btn-outline-primary" %>

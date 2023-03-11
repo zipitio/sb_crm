@@ -1,10 +1,12 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <p style="color: green"><%= notice %></p>
+  <h1>Showing Quote</h1>
 
-<%= render @quote %>
+  <%= render @quote %>
 
-<div>
-  <%= link_to "Edit this quote", edit_quote_path(@quote) %> |
-  <%= link_to "Back to quotes", quotes_path %>
-
-  <%= button_to "Destroy this quote", @quote, method: :delete %>
+  <div class="mt-3">
+    <%= link_to "Edit this quote", edit_quote_path(@quote), class: "btn btn-outline-secondary" %>
+    <%= link_to "Back to quotes", quotes_path, class: "btn btn-outline-info" %>
+    <%= link_to "Destroy this quote", @quote, method: :delete, class: "btn btn-outline-danger" %>
+  </div>
 </div>
