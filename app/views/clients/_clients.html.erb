@@ -1,0 +1,59 @@
+<%= turbo_frame_tag "clients" do %>
+	<div class="table-responsive-md m-3">
+		<table class="table table-striped table-hover table-bordered">
+			<thead>
+				<tr class="table-secondary">
+					<th id="clients-first_name" scope="col">First Name
+						<%= sort_link(column: "first_name", label: "<>") %>
+					</th>
+					<th id="clients-last_name" scope="col">Last Name
+						<%= sort_link(column: "first_name", label: "<>") %>
+					</th>
+					<th id="clients-company" scope="col">Company
+						<%= sort_link(column: "company", label: "<>") %>
+					</th>
+					<th id="clients-status" scope="col">Status
+						<%= sort_link(column: "status", label: "<>") %>
+					</th>
+					<th scope="col">Whatsapp</th>
+					<th scope="col">Email</th>
+					<th id="clients-create_at" scope="col">Created At
+						<%= sort_link(column: "created_at", label: "<>") %>
+					</th>
+					<th id="clients-update_at"scope="col">Updated At
+						<%= sort_link(column: "updated_at", label: "<>") %>
+					</th>
+					<th scope="col" colspan="3">Actions</th>
+				</tr>
+			</thead>
+			<tbody class="table-group-divider">
+				<% clients.each do |client| %>
+					<tr scope="row" class="table-light">
+						<td><%= client.first_name %></td>
+						<td><%= client.last_name %></td>
+						<td><%= client.company %></td>
+						<td><%= client.status %></td>
+						<td><%= client.whatsapp %>
+							<% if client.whatsapp.present? %>
+								<%= link_to icon("whatsapp", class: "text-success"),
+								"https://api.whatsapp.com/send/?phone=" + client.whatsapp,
+								target: '_blank' %>		
+							<% end %>
+						</td>
+						<td><%= client.email %>
+							<% if client.email.present? %>
+							<%= link_to icon("envelope", class: "contact-icon" ),
+							"mailto:" + client.email %>
+							<% end %>
+						</td>
+						<td><%= client.created_at.to_date %></td>
+						<td><%= client.updated_at.to_date %></td>
+						<td class="text-center"><%= link_to "Show", client_path(client), :class => "btn btn-secondary" %></td>
+						<td class="text-center"><%= link_to "Edit", edit_client_path(client), :class => "btn btn-secondary" %></td>
+						<td class="text-center"><%= link_to "Delete", client_path(client), :class => "btn btn-danger" ,data: { "turbo_method": :delete, "turbo_confirm": "Are you sure?"} %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+<% end %>

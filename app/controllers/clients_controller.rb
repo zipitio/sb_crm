@@ -41,6 +41,11 @@ class ClientsController < ApplicationController
 		redirect_to clients_path
 	end
 
+	def list
+		clients = Client.order("#{params[:column]} #{params[:direction]}")
+		render(partial: 'clients', locals: { clients: clients})
+	end
+
 	private
 
 	def set_client
