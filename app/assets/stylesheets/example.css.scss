@@ -1,0 +1,22 @@
+a:link {
+  color: black;
+  text-decoration: none;
+}
+
+.sort {
+  position: relative;
+  top: 1rem;
+  left: 0.5rem;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+}
+
+.sort-desc {
+  border-top: 8px solid #000;
+}
+
+.sort-asc {
+  border-bottom: 8px solid #000;
+}
