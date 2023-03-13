@@ -1,22 +1,26 @@
+
+
 a:link {
   color: black;
   text-decoration: none;
 }
-
+ 
 .sort {
-  position: relative;
   top: 1rem;
   left: 0.5rem;
   width: 0;
   height: 0;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
+  margin-right: 8px;
 }
 
 .sort-desc {
   border-top: 8px solid #000;
+  padding-top: 1px;
 }
 
 .sort-asc {
   border-bottom: 8px solid #000;
+  padding-bottom: 1px;
 }

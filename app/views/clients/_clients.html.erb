@@ -7,7 +7,7 @@
 						<%= sort_indicator if params[:column] == "first_name" %>
 						<%= sort_link(column: "first_name", label: "First Name") %>
 					</th>
-					<th id="clients-last_name" scope="col">
+					<th id="clients-last_name" scope="col" class="relative">
 						<%= sort_indicator if params[:column] == "last_name" %>
 						<%= sort_link(column: "last_name", label: "Last Name") %>
 					</th>
@@ -16,17 +16,17 @@
 						<%= sort_link(column: "company", label: "Company") %>
 						
 					</th>
-					<th id="clients-status" scope="col">
+					<th id="clients-status" scope="col" class="relative">
 						<%= sort_indicator if params[:column] == "status" %>
 						<%= sort_link(column: "status", label: "Status") %>
 					</th>
 					<th scope="col">Whatsapp</th>
 					<th scope="col">Email</th>
-					<th id="clients-create_at" scope="col">
+					<th id="clients-create_at" scope="col" class="relative">
 						<%= sort_indicator if params[:column] == "created_at" %>
 						<%= sort_link(column: "created_at", label: "Created at") %>
 					</th>
-					<th id="clients-update_at"scope="col">
+					<th id="clients-update_at"scope="col" class="relative">
 						<%= sort_indicator if params[:column] == "updated_at" %>
 						<%= sort_link(column: "updated_at", label: "Updated at") %>
 					</th>
