@@ -81,3 +81,4 @@ group :test do
 end
 
 gem "prawn", "~> 2.4"
+gem "letter_opener", group: :development

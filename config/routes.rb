@@ -19,11 +19,15 @@ Rails.application.routes.draw do
   delete "u/:id", to: 'users#destroy'
   get '/user' => "clients#index", :as => :user_root
 
+  #created to filter clients in the table
   resources :clients do
     collection do
       get 'list'
     end
   end
+
+  #send emails to clients
+  get 'clients/:id/send_welcome', to: 'clients#welcome'
 
   root 'pages#index'
   get '/stats', to: 'pages#stats'

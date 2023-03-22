@@ -1,5 +1,5 @@
 class ClientsController < ApplicationController
-	before_action :set_client, only: [:show, :edit, :update, :destroy]
+	before_action :set_client, only: [:show, :edit, :update, :destroy, :welcome]
 
 	def index
 		@clients = Client.all.order(created_at: :desc)
@@ -44,6 +44,17 @@ class ClientsController < ApplicationController
 	def list
 		clients = Client.order("#{params[:column]} #{params[:direction]}")
 		render(partial: 'clients', locals: { clients: clients})
+	end
+
+	def welcome
+		if @client.email.present?
+			UserMailer.with(client: @client).welcome.deliver_later
+			flash[:notice] = "Welcome email sent to client"
+			redirect_to @client
+		else
+			flash[:error] = "Please add an email to this client"
+			redirect_to @client
+		end
 	end
 
 	private

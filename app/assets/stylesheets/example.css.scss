@@ -6,8 +6,9 @@ a:link {
 }
  
 .sort {
-  top: 1rem;
-  left: 0.5rem;
+  position: relative;
+  top: 0rem;
+  left: 0rem;
   width: 0;
   height: 0;
   border-left: 6px solid transparent;
