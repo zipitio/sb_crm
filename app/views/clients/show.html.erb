@@ -113,7 +113,7 @@
 				<%= link_to "View PDF", quote_pdf_path(quote) %>
 			</div>
 			<div >
-				<%= link_to "Email quote to client", '#' %>
+				<%= link_to "Email quote to client", client_path(@client) + "/send_quote"%>
 			</div>
 		</div>
 	<% end %>

@@ -67,6 +67,12 @@ class QuotesController < ApplicationController
     
   end
 
+  def send_quote
+    UserMailer.with(quote: @quote).send_quote.deliver_later
+    flash[:notice] = "Quote send to client via email"
+    redirect_to @client
+  end
+
     # pdf = Prawn::Document.new
     # pdf.text @quote.client.company, size: 48, style: :bold
     # pdf.text @quote.quote_type
