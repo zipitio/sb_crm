@@ -33,13 +33,9 @@ class ExportPdf
 		#Items Column
 		text_box "Items", at:[80, 435]
 
-		if @quote.quote_type == "Sitio_Web_Estándar"
-			items = ['Diseño profesional', 'Páginas informativas', 'Integración con redes sociales', 'Optimización de motores de búsqueda', 'Certificado SSL', 'Hosting y subdominio']
-		elsif @quote.quote_type == "Sitio_Web_Estándar_Extra"
-			items = ['Diseño profesional', 'Páginas informativas', 'Integración con redes sociales', 'Optimización de motores de búsqueda', 'Certificado SSL', 'Hosting y subdominio personalizado', 'Cuentas de correo ilimitadas', 'Integración del dominio a la página']
-		elsif @quote.quote_type == "Sitio_Web_Premium"
+		if @quote.quote_type == "Maestria_Digital_Premium"
 			items = ['Diseño elaborado', 'Tarjeta digital del Sitio Web con QR', 'Estructura de navegación avanzada', 'Optimización de motores de búsqueda (SEO)', 'Integración con links de pago ', 'Integración de Blog y redes sociales ', 'Conexión con Chat de WhatsApp', 'Cuentas de correo ilimitadas', '1 año de Dominio Gratis']
-		elsif @quote.quote_type == "Sitio_Web_Elite"
+		elsif @quote.quote_type == "Maestria_Digital_Elite"
 			items = ['Diseño exclusivo', 'Tarjeta digital del Sitio Web con QR', 'Integración - herramientas de análisis de datos', 'Optimización de motores de búsqueda (SEO)', 'Integración de tienda en línea y links de pago ', 'Integración de herramientas de seguridad', 'Conexión con Chat de WhatsApp', 'Cuentas de correo ilimitadas', '1 año de Dominio Gratis']
 		end
 

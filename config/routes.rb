@@ -28,7 +28,7 @@ Rails.application.routes.draw do
 
   #send emails to clients
   get 'clients/:id/send_welcome', to: 'clients#welcome'
-  get 'clients/:id/send_quote', to: 'clients#send_quote'
+  get 'quotes/:id/send_quote', to: 'quotes#send_quote'
 
   #pages roots with quotes
   root 'pages#index'

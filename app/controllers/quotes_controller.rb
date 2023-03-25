@@ -1,5 +1,5 @@
 class QuotesController < ApplicationController
-  before_action :set_quote, only: %i[ show edit update destroy pdf]
+  before_action :set_quote, only: %i[ show edit update destroy pdf send_quote]
 
   # GET /quotes or /quotes.json
   def index
@@ -68,22 +68,13 @@ class QuotesController < ApplicationController
   end
 
   def send_quote
-    UserMailer.with(quote: @quote).send_quote.deliver_later
+    #UserMailer.with(quote: @quote, client: @client).send_quote.deliver_later
+    @client = @quote.client
+    UserMailer.send_quote(@quote.id,@client.id).deliver_now
     flash[:notice] = "Quote send to client via email"
-    redirect_to @client
+    redirect_to clients_path
   end
 
-    # pdf = Prawn::Document.new
-    # pdf.text @quote.client.company, size: 48, style: :bold
-    # pdf.text @quote.quote_type
-
-    # logo_image = StringIO.open(@quote.logo.download)
-    # pdf.image logo_image, fit: [300, 300]
-
-    # send_data(pdf.render,
-    #   filename: "#{@quote.client.company}_sb_quote.pdf",
-    #   type: 'application/pdf',
-    #   disposition: 'inline')
   
   private
     # Use callbacks to share common setup or constraints between actions.
