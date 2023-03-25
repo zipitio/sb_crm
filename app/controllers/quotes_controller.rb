@@ -68,11 +68,10 @@ class QuotesController < ApplicationController
   end
 
   def send_quote
-    #UserMailer.with(quote: @quote, client: @client).send_quote.deliver_later
     @client = @quote.client
-    UserMailer.send_quote(@quote.id,@client.id).deliver_now
-    flash[:notice] = "Quote send to client via email"
-    redirect_to clients_path
+    UserMailer.with(quote: @quote, client: @client).send_quote.deliver_later
+    flash[:notice] = "Quote sent to client via email"
+    redirect_to @client
   end
 
   

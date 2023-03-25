@@ -13,11 +13,9 @@ class UserMailer < ApplicationMailer
 			)
 	end
 
-	def send_quote(quote_id, client_id)
-		#@client = params[:client]
-		#@client_name = @client.first_name + " " + @client.last_name
-		@quote = Quote.find(quote_id)
-		@client = Client.find(client_id)
+	def send_quote
+		@quote = params[:quote]
+		@client = params[:client]
 		attachments['recunet_logo.png'] = File.read('app/assets/images/recunet_logo.png')
 		mail(
 			from: "SGRiveraC@gmail.com",
