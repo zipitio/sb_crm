@@ -2,7 +2,7 @@ class UserMailer < ApplicationMailer
 	def welcome
 		@client = params[:client]
 		client_name = @client.first_name + " " + @client.last_name
-		@greeting = "Hola " + client_name + "!"
+		@greeting = "Estimado/a " + client_name + "!"
 		attachments['recunet_logo.png'] = File.read('app/assets/images/recunet_logo.png')
 		mail(
 			from: "SGRiveraC@gmail.com",

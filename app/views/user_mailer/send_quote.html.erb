@@ -1,50 +1,108 @@
+<table align="center" border="0" cellpadding="0" cellspacing="0" width="600">
+		<tr>
+  			<td  align="right" style="padding: 20px 0 20px 0; font-size: 24px; background:#367094; font-weight: bold; font-family: Arial, sans-serif;">
+  					<p style="color:white">SPACEBYN &nbsp;</p>
+  			</td>
+  		</tr>
+  		
+  		<tr>
+  			<td bgcolor="#FFFFFF" style="padding: 40px 30px 40px 30px; border: 2px solid #F0F0F0; border-collapse: collapse;">
+  				<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  					<tr align="center">
+  						<td style="color: #153643; font-family: Arial, sans-serif; font-size: 18px;">
+  							<p>Hola <%= @quote.client.first_name %></p>
+  						</td>
+  					</tr>
+  					<tr align="center">
+  						<td style="padding: 20px 0 0px 0; color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;">
+  							Gracias por confiar en nosotros, aquí están los detalles de tu pago a premium:<br><br>
+  						</td>
+  					</tr>
+            <tr align="center">
+              <td>
+                <table>
+                  <tr>
+                    <td style="background-color: #E8E8E6; font-family: Arial, sans-serif; font-size: 16px;">Paquete</td>
+                    <td style="background-color: #F4F4F4; font-family: Arial, sans-serif; font-size: 16px;"><%= @quote.quote_type.humanize %></td>
+                  </tr>
+                  <tr>
+                    <td style="background-color: #E8E8E6; font-family: Arial, sans-serif; font-size: 16px;">Duración de paquete:</td>
+                    <td style="background-color: #F4F4F4; font-family: Arial, sans-serif; font-size: 16px;">12 meses</td>
+                  </tr>
+                  <tr>
+                    <td style="background-color: #E8E8E6; font-family: Arial, sans-serif; font-size: 16px;">Renovación hasta</td>
+                    <td style="background-color: #F4F4F4; font-family: Arial, sans-serif; font-size: 16px;"><%= @quote.created_at.next_year.to_date %></td>
+                  </tr>
+                  <tr>
+                    <td style="background-color: #E8E8E6; font-family: Arial, sans-serif; font-size: 16px;">Total pagado (MXN)</td>
+                    <td style="background-color: #F4F4F4; font-family: Arial, sans-serif; font-size: 16px;"><%= number_to_currency(@quote.amount, precision: 0)%></td>
+                  </tr>
+                  <tr>
+                    <td style="background-color: #E8E8E6; font-family: Arial, sans-serif; font-size: 16px;">Clave única del pago</td>
+                    <td style="background-color: #F4F4F4; font-family: Arial, sans-serif; font-size: 16px;">X</td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+  					<tr align="center">
+  						<td style="padding: 20px 0 0px 0; color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px; border-bottom: 3px solid #FD8E67;">
+  							<br>Un saludo<br>El equipo de Spacebyn
+  						</td>
+  					</tr>
+            <tr align="left">
+              <td style="padding: 20px 0 0px 0; color: #153643; font-family: Arial, sans-serif; font-size: 10px; line-height: 15px;">
+                Revisa los términos y condiciones del servicio haciendo click aquí<br>
+                Para solicitar una factura haz click aquí y llena los datos del formulario<br>
+              </td>
+            </tr>
 
-<p>Hola  </p>
+  				</table>
+  			</td>
+  		</tr>
 
-<div>Aqui esta tu cotización de Spacebyn</div>
+  		<tr>
+  			<td style="padding: 20px 30px 0px 30px;">
+  				<table border="0" cellpadding="0" cellspacing="0" width="100%" >
+  					<tr>
+  						<td>
+  						<table border="0" cellpadding="0" cellspacing="0" width="100%">
+		  					<tr>
+		  						<td width="280" valign="top">
+		  							<table border="0" cellpadding="0" cellspacing="0" width="100%">
+		  								<tr align="center">
+		  									<td>
+		  										<a href="https://www.instagram.com/buscoservicio" style="text-decoration:none;">
+                          <img src="https://buscoservicio.com/assets/mailPictures/small_icons/instagram" alt="instagram" style="display: inline-block; width:16px"/>
+                          </a>
+                          <a href="https://www.facebook.com/Buscoservicio-108623691553701/" style="text-decoration:none;">
+                          <img src="https://buscoservicio.com/assets/mailPictures/small_icons/facebook" alt="facebook" style="display: inline-block; width:16px"/>
+                          </a>
+                          <a href="https://www.youtube.com/channel/UC7ig6Z40Bl0wOvUAz3iX6qA" style="text-decoration:none;">
+                          <img src="https://buscoservicio.com/assets/mailPictures/small_icons/youtube" alt="youtube" style="display: inline-block; width:16px"/>
+                          </a>
+		  									</td>
+		  								</tr>
+		  							</table>
+		  						</td>
+		  					</tr>
+  						</table>
+  						</td>
+  					</tr>
+  				</table>
+  			</td>
+  		</tr>
+  		<tr>
+  			<td style="padding: 10px 30px 30px 30px;">
+  				<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  					<tr align="center" style="color: #A1A1A1; font-family: Arial, sans-serif; font-size: 12px;" width="75%">
+  						<td>
+  							© 2023 Spacebyn, todos los derechos reservados <br><br>
+  							México, Ciudad de México
+  						</td>
+  					</tr>
+  				</table>
+  			</td>
+  		</tr>
 
-<h2>HTML Table</h2>
 
-<div><strong>Empresa:</strong> <%= @quote.client.company %></div>
-<div><strong>Fecha de Cotización:</strong> </div>
-Quote Type: <%= @quote.quote_type.humanize  %>
-
-
-<div>------------------------------------------------------</div>
-<table>
-  <tr>
-    <th>Company</th>
-    <th>Contact</th>
-    <th>Country</th>
-  </tr>
-  <tr>
-    <td><%= @client.company %></td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr>
-  <tr>
-    <td>Ernst Handel</td>
-    <td>Roland Mendel</td>
-    <td>Austria</td>
-  </tr>
-  <tr>
-    <td>Island Trading</td>
-    <td>Helen Bennett</td>
-    <td>UK</td>
-  </tr>
-  <tr>
-    <td>Laughing Bacchus Winecellars</td>
-    <td>Yoshi Tannamuri</td>
-    <td>Canada</td>
-  </tr>
-  <tr>
-    <td>Magazzini Alimentari Riuniti</td>
-    <td>Giovanni Rovelli</td>
-    <td>Italy</td>
-  </tr>
-</table>
+	</table>
