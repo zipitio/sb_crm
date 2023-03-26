@@ -1,4 +1,5 @@
 class Quote < ApplicationRecord
+	has_secure_token :invoice_number
 	enum quote_type: {
     Maestria_Digital_Premium: 11999,
     Maestria_Digital_Elite: 19900

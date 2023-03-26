@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_26_154308) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_26_194138) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -74,6 +74,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_26_154308) do
     t.integer "extra_amount", default: 0
     t.integer "status"
     t.string "invoice_number"
+    t.index ["invoice_number"], name: "index_quotes_on_invoice_number", unique: true
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

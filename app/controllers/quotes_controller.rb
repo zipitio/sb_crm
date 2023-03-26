@@ -1,6 +1,5 @@
 class QuotesController < ApplicationController
   before_action :set_quote, only: %i[ show edit update destroy pdf send_quote]
-
   # GET /quotes or /quotes.json
   def index
     @quotes = Quote.all
@@ -83,6 +82,6 @@ class QuotesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def quote_params
-      params.fetch(:quote, {}).permit(:quote_type, :amount, :client_id, :extra_amount, :status, :invoice_number)
+      params.fetch(:quote, {}).permit(:quote_type, :amount, :client_id, :extra_amount, :status)
     end
 end
