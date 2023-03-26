@@ -5,6 +5,11 @@
   </p>
 
   <p>
+    <strong>Status:</strong>
+    <%= quote.status %>
+  </p>
+
+  <p>
     <strong>Amount:</strong>
     <%= number_to_currency(quote.amount, precision: 0) %>
   </p>
@@ -14,6 +19,11 @@
     <%= quote.client_id %>
     <strong>Client Name:</strong>
     <%= quote.client.company %>
+  </p>
+
+  <p>
+    <strong>Invoice Number:</strong>
+    <%= quote.invoice_number %>
   </p>
 
 </div>

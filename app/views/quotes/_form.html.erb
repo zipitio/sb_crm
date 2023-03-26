@@ -26,8 +26,19 @@
     </div>
 
     <div class="col-4 mt-2">
+      <%= form.label :status, "Status", class: "form-label", style: "display: block" %>
+      <%= form.select :status, Quote.statuses.keys ,class: "form-select", prompt: "Select quote status" %>
+    </div>
+
+    <div class="col-4 mt-2">
       <%= form.label :extra_amount, "Extra Amount", class: "form-label", style: "display: block" %>
       <%= form.number_field :extra_amount, data: { action: "change->form-element#remotesubmit" }, class: "form-control" %>
+    </div>
+
+
+
+    <div>
+      <%= form.hidden_field :invoice_number, value: "sample" %>
     </div>
   
   <% quote.amount = quote.extra_amount.to_i + Quote.quote_types[quote.quote_type].to_i %>
